@@ -77,8 +77,52 @@ body {
 }
 
 .secondary-tabs {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 6px;
+  border-radius: 16px;
+  display: flex;
+  gap: 4px;
   margin-bottom: 2.5rem;
-  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.secondary-tabs button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.secondary-tabs button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--primary-color);
+}
+
+.secondary-tabs button.active {
+  background: white;
+  color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transform: translateY(-1px);
+}
+
+.secondary-tabs button svg {
+  transition: transform 0.3s ease;
+}
+
+.secondary-tabs button:hover svg {
+  transform: scale(1.1);
 }
 
 .workspace {

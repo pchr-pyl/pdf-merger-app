@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   FileUp, FileText, X, Download, Loader2, CheckCircle2, 
   Trash2, Layout, Shield, 
-  FileStack, ArrowLeft, ArrowRight
+  FileStack, ArrowLeft, ArrowRight,
+  Zap, Image as ImageIcon, FileImage, Type, Scissors
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { mergePdfs, imagesToPdf } from './utils/pdf-logic';
@@ -210,7 +211,7 @@ const App: React.FC = () => {
     <div className="app-container">
       <div className="category-tabs">
         <button className={category === 'combine' ? 'active' : ''} onClick={() => handleCategoryChange('combine')}>
-          <FileStack size={18} /> รวม/แปลง
+          <Zap size={18} /> รวม/แปลง
         </button>
         <button className={category === 'manage' ? 'active' : ''} onClick={() => handleCategoryChange('manage')}>
           <Layout size={18} /> จัดการหน้า
@@ -223,21 +224,35 @@ const App: React.FC = () => {
       <div className="tabs secondary-tabs">
         {category === 'combine' && (
           <>
-            <button className={mode === 'merge' ? 'active' : ''} onClick={() => handleModeChange('merge')}>รวม PDF</button>
-            <button className={mode === 'convert' ? 'active' : ''} onClick={() => handleModeChange('convert')}>PDF เป็นภาพ</button>
-            <button className={mode === 'image-to-pdf' ? 'active' : ''} onClick={() => handleModeChange('image-to-pdf')}>ภาพ เป็น PDF</button>
-            <button className={mode === 'extract-text' ? 'active' : ''} onClick={() => handleModeChange('extract-text')}>ดึงข้อความ</button>
+            <button className={mode === 'merge' ? 'active' : ''} onClick={() => handleModeChange('merge')}>
+              <FileStack size={16} /> รวม PDF
+            </button>
+            <button className={mode === 'convert' ? 'active' : ''} onClick={() => handleModeChange('convert')}>
+              <ImageIcon size={16} /> PDF เป็นภาพ
+            </button>
+            <button className={mode === 'image-to-pdf' ? 'active' : ''} onClick={() => handleModeChange('image-to-pdf')}>
+              <FileImage size={16} /> ภาพ เป็น PDF
+            </button>
+            <button className={mode === 'extract-text' ? 'active' : ''} onClick={() => handleModeChange('extract-text')}>
+              <Type size={16} /> ดึงข้อความ
+            </button>
           </>
         )}
         {category === 'manage' && (
           <>
-            <button className={mode === 'organize' ? 'active' : ''} onClick={() => handleModeChange('organize')}>จัดเรียง/ลบหน้า</button>
-            <button className={mode === 'split' ? 'active' : ''} onClick={() => handleModeChange('split')}>แยกไฟล์</button>
+            <button className={mode === 'organize' ? 'active' : ''} onClick={() => handleModeChange('organize')}>
+              <Layout size={16} /> จัดเรียง/ลบหน้า
+            </button>
+            <button className={mode === 'split' ? 'active' : ''} onClick={() => handleModeChange('split')}>
+              <Scissors size={16} /> แยกไฟล์
+            </button>
           </>
         )}
         {category === 'security' && (
           <>
-            <button className={mode === 'watermark' ? 'active' : ''} onClick={() => handleModeChange('watermark')}>เพิ่มลายน้ำ</button>
+            <button className={mode === 'watermark' ? 'active' : ''} onClick={() => handleModeChange('watermark')}>
+              <Type size={16} /> เพิ่มลายน้ำ
+            </button>
           </>
         )}
       </div>
